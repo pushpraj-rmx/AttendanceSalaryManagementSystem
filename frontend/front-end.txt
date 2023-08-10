@@ -1,0 +1,41 @@
+.
+├── README.md
+├── node_modules
+├── package-lock.json
+├── package.json
+├── public
+│   └── index.html
+└── src
+    ├── App.css
+    ├── App.js
+    ├── components
+    │   ├── AdminPanel.js
+    │   ├── Analytics.js
+    │   ├── AttendanceTracking.js
+    │   ├── Dashboard.js
+    │   ├── EmployeeDetails.js
+    │   ├── EmployeeDirectory.js
+    │   ├── EmployeeManagement.js
+    │   ├── EmployeeOnboarding.js
+    │   ├── EmployeePerformance.js
+    │   ├── EmployeeSearch.js
+    │   ├── Error.js
+    │   ├── Footer.js
+    │   ├── LeaveManagement.js
+    │   ├── LoadingSpinner.js
+    │   ├── Login.js
+    │   ├── Modals.js
+    │   ├── Navbar.js
+    │   ├── Notifications.js
+    │   ├── Pagination.js
+    │   ├── Profile.js
+    │   ├── Reports.js
+    │   ├── ReportsGeneration.js
+    │   ├── SalaryCalculation.js
+    │   ├── SalaryDetails.js
+    │   ├── SalarySlip.js
+    │   └── Settings.js
+    ├── index.css
+    └── index.js
+
+4787 directories, 37562 files
