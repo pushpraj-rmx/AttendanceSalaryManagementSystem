@@ -1,25 +1,28 @@
+// attendanceRoutes.js
+
 const express = require("express");
+const Attendance = require("../models/attendanceModel"); // Import the Attendance model
+const authMiddleware = require("../middleware/authMiddleware"); // Import your authentication middleware if needed
+
 const router = express.Router();
 
-// Import any necessary models or modules
-
-// Define routes related to attendance management
-
-// Example: Mark attendance
-router.post("/api/attendance", async (req, res) => {
+// Route to mark attendance
+router.post("http://localhost:5000/api/attendance/mark", authMiddleware, async (req, res) => {
   try {
-    // Extract attendance data from request body
     const { employeeId, date } = req.body;
+    const newAttendance = new Attendance({
+      employeeId,
+      date,
+      status: "Present", // Default status
+    });
 
-    // Perform necessary logic to mark attendance
+    await newAttendance.save();
 
-    // Respond with success message or appropriate data
-    res.json({ message: "Attendance marked successfully" });
+    res.status(201).json({ message: "Attendance marked successfully" });
   } catch (error) {
-    res.status(500).json({ error: "Error marking attendance" });
+    console.error("Error marking attendance:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
-
-// Add more routes for attendance management as needed
 
 module.exports = router;

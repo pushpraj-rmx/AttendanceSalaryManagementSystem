@@ -3,7 +3,7 @@ const router = express.Router();
 const AttendanceRecord = require('../models/attendanceRecord');
 
 // Route to mark attendance
-router.post('/api/attendance', async (req, res) => {
+router.post('http://localhost:5000/api/attendance', async (req, res) => {
   const { employeeId, date } = req.body;
 
   try {
@@ -30,7 +30,7 @@ router.post('/api/attendance', async (req, res) => {
 });
 
 // Route to get all attendance records
-router.get('/api/attendance', async (req, res) => {
+router.get('http://localhost:5000/api/attendance', async (req, res) => {
   try {
     // Retrieve all attendance records from the database
     const attendanceRecords = await AttendanceRecord.find();

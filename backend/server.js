@@ -106,7 +106,7 @@ app.post("/api/salary/calculate", async (req, res) => {
 });
 
 // Use the attendance routes middleware
-app.use(attendanceRoutes);
+app.use("http://localhost:5000/api/attendance", attendanceRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

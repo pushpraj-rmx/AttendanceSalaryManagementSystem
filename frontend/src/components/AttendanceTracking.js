@@ -7,14 +7,27 @@ const AttendanceTracking = () => {
   const [selectedRecord, setSelectedRecord] = useState(null);
 
   useEffect(() => {
-    // Fetch attendance records from the backend and update attendanceRecords state
-    // Implement this fetch logic
-  }, []);
+    const fetchAttendanceRecords = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/attendance'); // Change the URL to your backend endpoint
+        if (response.ok) {
+          const data = await response.json();
+          setAttendanceRecords(data); // Assuming data is an array of attendance records
+        } else {
+          // Handle error cases
+        }
+      } catch (error) {
+        // Handle error cases
+      }
+    };
+  
+    fetchAttendanceRecords();
+  }, []);  
 
   const handleMarkAttendance = async () => {
     try {
       // Send attendance data to the backend
-      const response = await fetch('/api/attendance', {
+      const response = await fetch('http://localhost:5000/api/attendance', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -44,7 +57,6 @@ const AttendanceTracking = () => {
     setSelectedRecord(record);
   };
 
-  // Map through attendanceRecords and display in rows
   const attendanceRows = attendanceRecords.map((record, index) => (
     <tr key={index} onClick={() => handleRecordClick(record)}>
       <td>{record.employeeId}</td>
