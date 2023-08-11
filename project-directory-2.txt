@@ -1,0 +1,84 @@
+.
+├── README.md
+├── backend
+│   ├── attendanceRecord.js
+│   ├── attendanceRoutes.js
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── password.js
+│   ├── routes
+│   │   └── attendanceRoutes.js
+│   └── server.js
+├── frontend
+│   ├── build
+│   │   ├── asset-manifest.json
+│   │   ├── index.html
+│   │   └── static
+│   │       ├── css
+│   │       │   ├── main.7c84714c.css
+│   │       │   └── main.7c84714c.css.map
+│   │       └── js
+│   │           ├── main.b8ec2481.js
+│   │           ├── main.b8ec2481.js.LICENSE.txt
+│   │           └── main.b8ec2481.js.map
+│   ├── front-end.txt
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── public
+│   │   └── index.html
+│   ├── src
+│   │   ├── App.css
+│   │   ├── App.js
+│   │   ├── AppRoutes.js
+│   │   ├── components
+│   │   │   ├── AdminPanel.js
+│   │   │   ├── AllComponents.js
+│   │   │   ├── Analytics.js
+│   │   │   ├── AttendanceDetailsModal.js
+│   │   │   ├── AttendanceTracking.js
+│   │   │   ├── Dashboard.js
+│   │   │   ├── EmployeeDetails.js
+│   │   │   ├── EmployeeDirectory.js
+│   │   │   ├── EmployeeManagement.js
+│   │   │   ├── EmployeeOnboarding.js
+│   │   │   ├── EmployeePerformance.js
+│   │   │   ├── EmployeeSearch.js
+│   │   │   ├── Error.js
+│   │   │   ├── Footer.css
+│   │   │   ├── Footer.js
+│   │   │   ├── Header.js
+│   │   │   ├── LeaveManagement.js
+│   │   │   ├── LoadingSpinner.js
+│   │   │   ├── Login.js
+│   │   │   ├── Logout.js
+│   │   │   ├── Modal.js
+│   │   │   ├── Navbar.js
+│   │   │   ├── Notifications.js
+│   │   │   ├── Pagination.js
+│   │   │   ├── Profile.js
+│   │   │   ├── ProjectInfo.js
+│   │   │   ├── Reports.js
+│   │   │   ├── ReportsGeneration.js
+│   │   │   ├── SalaryCalculation.js
+│   │   │   ├── SalaryDetails.js
+│   │   │   ├── SalarySlip.js
+│   │   │   ├── Settings.js
+│   │   │   └── SignUp.js
+│   │   ├── images
+│   │   │   └── bg
+│   │   │       ├── asms.png
+│   │   │       └── asms.svg
+│   │   ├── index.css
+│   │   ├── index.js
+│   │   └── pages
+│   │       ├── AttendancePage.js
+│   │       ├── DashboardPage.js
+│   │       ├── EmployeesPage.js
+│   │       ├── LoginPage.js
+│   │       ├── ProfilePage.js
+│   │       ├── SalaryPage.js
+│   │       ├── SignUpPage.js
+│   │       └── TestPage.js
+│   └── wokring.md
+├── project-directory-2.txt
+└── project-directory.txt

@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const AttendanceTracking = () => {
   const [attendanceRecords, setAttendanceRecords] = useState([]);
   const [employeeId, setEmployeeId] = useState('');
   const [date, setDate] = useState('');
+  const [selectedRecord, setSelectedRecord] = useState(null);
+
+  useEffect(() => {
+    // Fetch attendance records from the backend and update attendanceRecords state
+    // Implement this fetch logic
+  }, []);
 
   const handleMarkAttendance = async () => {
     try {
@@ -34,9 +40,13 @@ const AttendanceTracking = () => {
     }
   };
 
+  const handleRecordClick = (record) => {
+    setSelectedRecord(record);
+  };
+
   // Map through attendanceRecords and display in rows
   const attendanceRows = attendanceRecords.map((record, index) => (
-    <tr key={index}>
+    <tr key={index} onClick={() => handleRecordClick(record)}>
       <td>{record.employeeId}</td>
       <td>{record.date}</td>
       <td>{record.status}</td>
@@ -74,6 +84,16 @@ const AttendanceTracking = () => {
         </thead>
         <tbody>{attendanceRows}</tbody>
       </table>
+
+      {selectedRecord && (
+        <div>
+          <h2>Attendance Details</h2>
+          <p>Employee ID: {selectedRecord.employeeId}</p>
+          <p>Date: {selectedRecord.date}</p>
+          <p>Status: {selectedRecord.status}</p>
+          {/* Add more detailed information here */}
+        </div>
+      )}
     </div>
   );
 };

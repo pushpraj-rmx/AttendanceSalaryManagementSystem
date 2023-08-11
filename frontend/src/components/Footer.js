@@ -1,3 +1,4 @@
+import "./Footer.css"
 import React from 'react';
 
 const Footer = () => {
@@ -10,7 +11,7 @@ const Footer = () => {
           <a href="/contact">Contact Us</a>
           {/* Add more links as needed */}
         </div>
-        <p>&copy; {new Date().getFullYear()} Your Company. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} National Marketing Projects Inc. All rights reserved.</p>
       </div>
     </footer>
   );

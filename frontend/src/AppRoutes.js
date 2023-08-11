@@ -7,6 +7,7 @@ import LoginPage from './pages/LoginPage';
 import EmployeesPage from './pages/EmployeesPage';
 import SignUpPage from './pages/SignUpPage';
 import ProfilePage from './pages/ProfilePage';
+import TestPage from './pages/TestPage';
 
 
 const AppRoutes = () => {
@@ -21,7 +22,7 @@ const AppRoutes = () => {
       <Route path="/profile" element={<ProfilePage />} /> 
       <Route path="/profile" element={<ProfilePage />} /> 
       <Route path="/dashboard" element={<DashboardPage />} />      
-      {/* Add more routes for other pages */}
+      <Route path="/test" element={<TestPage />} />      
     </Routes>
   );
 };

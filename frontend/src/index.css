@@ -1,14 +1,8 @@
-/* 
-Available Fonts - imported in public/index.html : 
-font-family: 'Cinzel', serif;
-font-family: 'Cinzel Decorative', cursive;
-font-family: 'Lato', sans-serif;
-*/
-
 * {
-    font-family: 'Lato', sans-serif;    
+  font-family: "Lato", sans-serif;
 }
 
-.page-title{
-    font-family: 'Cinzel', serif;
+
+.page-title {
+  font-family: "Cinzel", serif;
 }

@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const cors = require("cors"); 
+const cors = require("cors");
 const attendanceRoutes = require('./routes/attendanceRoutes');
 
 
@@ -24,11 +24,8 @@ mongoose
   });
 
 app.use(express.json());
-
-// Use the cors middleware to allow requests from all origins
 app.use(cors());
 
-// Test route: Respond with a simple message to verify if the server is working
 app.get("/api/test", (req, res) => {
   res.json({ message: "API is working!" });
 });
@@ -54,6 +51,7 @@ app.post("/api/login", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
 
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
@@ -82,9 +80,34 @@ app.post("/api/register", async (req, res) => {
   }
 });
 
+// Calculate salary route
+app.post("/api/salary/calculate", async (req, res) => {
+  const { employeeId, workingDays, halfWorkingDays } = req.body;
+
+  try {
+    // Fetch employee's salary details from the database (replace with your model)
+    const employee = await Employee.findOne({ _id: employeeId });
+
+    // Calculate basic pay (replace with your logic)
+    const basicPay = employee.basicPay;
+
+    // Calculate overtime, bonuses, and deductions (replace with your logic)
+    const overtime = 0;
+    const bonuses = 0;
+    const deductions = 0;
+
+    // Calculate total salary
+    const totalSalary = basicPay + overtime + bonuses - deductions;
+
+    res.json({ totalSalary });
+  } catch (error) {
+    res.status(500).json({ error: "Error calculating salary" });
+  }
+});
+
+// Use the attendance routes middleware
+app.use(attendanceRoutes);
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
-
-app.use(attendanceRoutes);
