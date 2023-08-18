@@ -32,8 +32,22 @@ The project is licensed under the MIT License. See the LICENSE file for more inf
 ## Contributors
 
 * Pushpraj Dwivedi (https://github.com/pushpraj-rmx)
+* Sudip Biswas (https://github.com/webdevsudip)
 
 *feel free to add your name and/or email here if you are contributing to project*
+
+## How to contribute?
+
+* Clone repository
+* run 'npm install' command in both frontend & backend
+* Create a .env file in backend directory
+* Add these in .env file -
+    JWT_SECRET=< JWT Secret Key >
+    PORT=5000
+    MONGO_URL=< Your MongoDB URL>
+* Run Backend with 'npm run dev' command
+* Run Frontend with 'npm start' command
+* Now you can contribute & all set.
 
 ## Next Steps
 
