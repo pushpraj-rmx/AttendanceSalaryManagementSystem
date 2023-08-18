@@ -1,82 +1,35 @@
 const express = require("express");
-const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+const cookieParser = require("cookie-parser");
 const cors = require("cors");
-const attendanceRoutes = require('./routes/attendanceRoutes');
-
+require("dotenv").config(); // For .env variables
+const attendanceRoutes = require("./routes/attendanceRoutes");
+const connectToDB = require("./helpers/dbConnect");
+const authRoutes = require("./routes/authRoutes");
 
 const app = express();
 const port = process.env.PORT || 5000;
-
 const dbURI =
+  process.env.MONGO_URL ||
   "mongodb+srv://nmp-asms:JJCPBUVqiCgsRYQO@cluster0.7qpwm1n.mongodb.net/?retryWrites=true&w=majority";
 
-mongoose
-  .connect(dbURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("Connected to MongoDB");
-  })
-  .catch((err) => {
-    console.error("Error connecting to MongoDB:", err);
-  });
-
 app.use(express.json());
-app.use(cors());
+app.use(cookieParser());
+app.use(
+  cors({
+    // Origin - Frontend URL
+    origin: [
+      "http://localhost:3000", // For development
+      // "https://example.com", // For production (when hosted)
+    ],
+  })
+);
 
 app.get("/api/test", (req, res) => {
-  res.json({ message: "API is working!" });
-});
-
-app.post("/api/login", async (req, res) => {
-  const { username, password } = req.body;
-
   try {
-    const user = await User.findOne({ username });
-
-    if (!user) {
-      return res.status(401).json({ error: "Invalid username or password" });
-    }
-
-    const isPasswordValid = await bcrypt.compare(password, user.password);
-
-    if (!isPasswordValid) {
-      return res.status(401).json({ error: "Invalid username or password" });
-    }
-
-    res.json({ message: "Login successful" });
-  } catch (error) {
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
-
-
-const userSchema = new mongoose.Schema({
-  username: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-});
-
-const User = mongoose.model("User", userSchema);
-
-app.post("/api/register", async (req, res) => {
-  const { username, password } = req.body;
-
-  try {
-    const existingUser = await User.findOne({ username });
-    if (existingUser) {
-      return res.status(400).json({ error: "Username already exists" });
-    }
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const newUser = new User({ username, password: hashedPassword });
-    await newUser.save();
-
-    res.json({ message: "Registration successful" });
-  } catch (error) {
-    res.status(500).json({ error: "Internal server error" });
+    res.json({ message: "API is working!" });
+  } catch (err) {
+    res.json({ message: err.message });
+    console.error(err.message);
   }
 });
 
@@ -105,9 +58,20 @@ app.post("/api/salary/calculate", async (req, res) => {
   }
 });
 
+// Use these routes
+app.use("/api/auth", authRoutes);
+
 // Use the attendance routes middleware
 app.use("http://localhost:5000/api/attendance", attendanceRoutes);
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+// Listens to the server only if DataBase is connected
+connectToDB(dbURI)
+  .then(() => {
+    // After connection listens to port, else catches error
+    app.listen(port, () => {
+      console.log(`Server is running on http://localhost:${port}`);
+    });
+  })
+  .catch((err) => {
+    console.log("Some error occured.\n", err.message);
+  });

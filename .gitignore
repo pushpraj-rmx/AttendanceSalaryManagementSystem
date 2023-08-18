@@ -1,4 +1,5 @@
 *.txt
 backend/node_modules/
+backend/.env.local
 frontend/node_modules/
 

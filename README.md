@@ -32,8 +32,13 @@ The project is licensed under the MIT License. See the LICENSE file for more inf
 ## Contributors
 
 * Pushpraj Dwivedi (https://github.com/pushpraj-rmx)
+* Sudip Biswas (https://github.com/webdevsudip)
 
 *feel free to add your name and/or email here if you are contributing to project*
+
+## How to contribute?
+
+* Clone repository
 
 ## Next Steps
 
